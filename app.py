@@ -1,8 +1,11 @@
 from flask import Flask
 app = Flask(__name__)
+
 @app.route("/")
 def home():
-    return "SnapTrip AI API backend is running on Vercel!"import streamlit as st
+    return "SnapTrip AI is running!"
+
+# --- Your existing Streamlit code starts below this line ---import streamlit as st
 import os
 from dotenv import load_dotenv
 
@@ -149,6 +152,7 @@ def main():
     active_trip = None
 
     with tab_setup:
+        active_trip = render_trip_dashboard()
         active_trip = render_trip_dashboard(custom_gemini_key=effective_key)
 
     with tab_snap:
@@ -159,6 +163,7 @@ def main():
                 active_id = st.session_state.get("active_trip_id", user_trips[0]["id"])
                 active_trip = db.get_trip_by_id(active_id)
 
+        effective_key = get_api_key(st.session_state.get("custom_gemini_key"))
         render_snap_and_identify(active_trip, custom_gemini_key=effective_key)
 
 
