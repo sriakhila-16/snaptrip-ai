@@ -1,0 +1,2 @@
+# SnapTrip AI Components Package
+
