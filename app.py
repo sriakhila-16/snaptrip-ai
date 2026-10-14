@@ -1,4 +1,8 @@
-import streamlit as st
+from flask import Flask
+app = Flask(__name__)
+@app.route("/")
+def home():
+    return "SnapTrip AI API backend is running on Vercel!"import streamlit as st
 import os
 from dotenv import load_dotenv
 
